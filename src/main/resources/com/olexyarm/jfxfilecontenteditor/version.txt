@@ -1,0 +1,4 @@
+Build.version: ${pom.version} 
+Build.date: ${timestamp} 
+Build.JavaHome: ${env.JAVA_HOME} 
+Build.OS: ${os.name} 

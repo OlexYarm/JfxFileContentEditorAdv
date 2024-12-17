@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ContentDisplay?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Region?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:id="hboxMenu"
+      fx:controller="com.olexyarm.jfxfilecontenteditor.JfxFileContentEditorMenuController">
+    <VBox fx:id="vboxMenuToolbar" >
+
+        <HBox fx:id="hboxMenuBar" alignment="CENTER" spacing="10"
+              style="-fx-background-color: linear-gradient(to top, lightgrey, transparent); -fx-border-width:1; -fx-border-color:grey;">
+            
+            <MenuBar fx:id="mbMenuBar" layoutY="1.0" prefHeight="15.0" prefWidth="${hboxMenu.parent.width}" VBox.vgrow="ALWAYS"
+                     style="-fx-background-color:rgba(0,0,0,0); ">
+
+                <Menu fx:id="menuFile" mnemonicParsing="true" text="_File">
+                    <MenuItem fx:id="newFile" mnemonicParsing="true" onAction="#newFile" text="_New File">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem fx:id="openFile" mnemonicParsing="true" onAction="#openFile" text="_Open File">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem fx:id="miSaveFile" mnemonicParsing="true" onAction="#saveFile" text="_Save File" visible="false">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem fx:id="miSaveFileAs" mnemonicParsing="true" onAction="#saveFileAs" text="Save File _As" visible="false">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem fx:id="miSaveFilesAll" mnemonicParsing="true" onAction="#saveFilesAll" text="Save Files Al_l" visible="false">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem fx:id="miPrint" mnemonicParsing="true" onAction="#printFile" text="_Print" visible="false">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem id="exit" mnemonicParsing="true" onAction="#exit" text="E_xit" />
+                </Menu>
+                <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit" visible="true">
+                    <MenuItem fx:id="miFind" mnemonicParsing="true" onAction="#find" text="_Find">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem fx:id="miReplace" mnemonicParsing="true" onAction="#replace" text="_Replace">
+                        <accelerator>
+                            <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                    <Menu fx:id="menuLineEnding" mnemonicParsing="true" text="_Line Ending">
+                        <Menu fx:id="miLineEndingWin" mnemonicParsing="true" onAction="#lineEndingWin" text="_Windows">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </Menu>
+                        <Menu fx:id="miLineEndingUnix" mnemonicParsing="true" onAction="#lineEndingUnix" text="_Unix">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </Menu>
+                    </Menu>
+                </Menu>
+        
+                <Menu fx:id="menuFont" mnemonicParsing="false" text="Font" visible="false">
+                    <items>
+                        <MenuItem fx:id="myFontIncrease" mnemonicParsing="false" onAction="#fontIncrease" text="Increase" />
+                        <MenuItem fx:id="myFontDecrease" mnemonicParsing="false" onAction="#fontDecrease" text="Dcrease" />
+                        <MenuItem fx:id="miFontDefault" mnemonicParsing="false" onAction="#fontSelect" text="Default" />
+                        <MenuItem fx:id="miFontOsDefault" mnemonicParsing="false" onAction="#fontSelect" text="OS Default" />
+                        <Menu mnemonicParsing="false" text="Size">
+                            <CustomMenuItem fx:id="menuFontSize" mnemonicParsing="false" text="Font Size">
+                                <content>
+                                    <HBox>
+                                        <TextField fx:id="menuTextFielsFontSize" onAction="#fontSizeSelect"/>
+                                    </HBox>
+                                </content>
+                            </CustomMenuItem>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Family">
+                            <CustomMenuItem fx:id="menuFontFamily" mnemonicParsing="false" text="Font Family">
+                                <content>
+                                    <ListView fx:id="menuListViewFontFamily" onMouseClicked="#fontFamilySelect"></ListView>
+                                </content>
+                            </CustomMenuItem>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Charset Read">
+                            <items>
+                                <CustomMenuItem fx:id="miCharsetRead" mnemonicParsing="false" text="Charset Read">
+                                    <content>
+                                        <ListView fx:id="menuListViewCharsetRead" onMouseClicked="#charsetSelectRead"></ListView>
+                                    </content>
+                                </CustomMenuItem>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Charset Write">
+                            <items>
+                                <CustomMenuItem fx:id="miCharsetWrite" mnemonicParsing="false" text="Charset Write">
+                                    <content>
+                                        <ListView fx:id="menuListViewCharsetWrite" onMouseClicked="#charsetSelectWrite"></ListView>
+                                    </content>
+                                </CustomMenuItem>
+                            </items>
+                        </Menu>
+                    </items>
+                </Menu>
+        
+                <Menu fx:id="menuFavorites" mnemonicParsing="false" text="Favorites">
+                    <MenuItem fx:id="favorotesEdit" onAction="#favoritesEdit" text="E_dit">
+                    </MenuItem>
+                    <MenuItem fx:id="favorotesAdd" onAction="#favoritesAdd" text="Add">
+                    </MenuItem>
+                    <SeparatorMenuItem mnemonicParsing="false" />
+                </Menu>
+
+                <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
+                    <MenuItem fx:id="miSettingsEdit" onAction="#settingsEdit" text="Settings">
+                    </MenuItem>
+                    <MenuItem fx:id="miAbout" onAction="#about" text="A_bout">
+                    </MenuItem>
+                </Menu>
+
+            </MenuBar>
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <CheckBox fx:id="cbTextWrap" alignment="CENTER" mnemonicParsing="false" text="Wrap text" 
+                      visible="true"
+                      style="-fx-font-size: 10px; -fx-background-color:rgba(0,0,0,0); "/>
+            <Button fx:id="buttonFontIncrease" mnemonicParsing="false" onAction="#fontIncrease" text="Font Increase" visible="true"
+                    style="-fx-font-size:10px; -fx-background-color: rgba(0,0,0,0); -fx-border-width:1; -fx-border-style:solid; -fx-border-color:lightgrey;">
+                <contentDisplay>
+                    <ContentDisplay fx:value="GRAPHIC_ONLY" />
+                </contentDisplay>
+                <graphic>
+                    <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+                        <Image url="@img/icons8-increase-font-100.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="buttonFontDecrease" mnemonicParsing="false" onAction="#fontDecrease" text="Font Decrease" visible="true"
+                    style="-fx-font-size:10px; -fx-background-color: rgba(0,0,0,0); -fx-border-width:1; -fx-border-style:solid; -fx-border-color:lightgrey;">
+                <contentDisplay>
+                    <ContentDisplay fx:value="GRAPHIC_ONLY" />
+                </contentDisplay>
+                <graphic>
+                    <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+                        <Image url="@img/icons8-decrease-font-100.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+
+        <HBox fx:id="hboxToolbars">
+            <ToolBar fx:id="tbFile" HBox.hgrow="ALWAYS">
+                <items>
+                    <Button fx:id="buttonNewFile" onAction="#newFile" mnemonicParsing="false" text="New">
+                        <graphic>
+                            <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+                                <Image url="@img/icons8-new-file-100.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="buttonOpenFile" mnemonicParsing="false" onAction="#openFile" text="Open">
+                        <graphic>
+                            <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+                                <Image url="@img/icons8-add-file-100.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="buttonSaveFile" mnemonicParsing="false" onAction="#saveFile" text="Save" visible="false">
+                        <graphic>
+                            <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+                                <Image url="@img/icons8-save-100.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="buttonSaveFileAs" mnemonicParsing="false" onAction="#saveFileAs" text="Save As" visible="false">
+                        <graphic>
+                            <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+                                <Image url="@img/icons8-save-as-100.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="buttonSaveFileAll" mnemonicParsing="false" onAction="#saveFilesAll" text="Save All" visible="false">
+                        <graphic>
+                            <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+                                <Image url="@img/icons8-save-100.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="buttonPrint" mnemonicParsing="false" onAction="#printFile" text="Print" visible="false">
+                        <graphic>
+                            <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+                                <Image url="@img/icons8-print-100.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </items>
+            </ToolBar>
+        </HBox>
+        
+    </VBox>
+</HBox>

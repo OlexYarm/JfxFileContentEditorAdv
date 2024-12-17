@@ -1,0 +1,3 @@
+.fileContentEditor {
+   -fx-skin: "com.olexyarm.jfxfilecontenteditor.FileContentEditorSkin";
+}

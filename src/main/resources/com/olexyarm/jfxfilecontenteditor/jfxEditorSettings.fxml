@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane fx:id="gridPaneSettings" vgap="5" hgap="5" alignment="TOP_CENTER"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.olexyarm.jfxfilecontenteditor.JfxSettingsController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <Label fx:id="lblSettingsTitle" text="Java FX Editor Global Settings"
+           GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"
+           style="-fx-font: NORMAL 14 Tahoma;"
+           GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+
+    <Label fx:id="lblSettingsShowToolbar" alignment="CENTER" text="Show Toolbar"
+           GridPane.columnIndex="0" GridPane.rowIndex="1" 
+           GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+
+    <HBox fx:id="hboxSettingsShowToolbar" GridPane.columnIndex="1" GridPane.rowIndex="1"
+          spacing="10" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+        <RadioButton fx:id="settingsShowToolbarEnable" text="Enable" />
+        <RadioButton fx:id="settingsShowToolbarDisable" text="Disable" />
+    </HBox>
+
+    <Label fx:id="lblSettingsAutosaveEnable" alignment="CENTER" text="Autosave Files"
+                  GridPane.columnIndex="0" GridPane.rowIndex="2" 
+                  GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+    
+    <HBox fx:id="hboxSettingsAutosave" GridPane.columnIndex="1" GridPane.rowIndex="2"
+          spacing="10" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+        <RadioButton fx:id="settingsAutosaveEnable" text="Enable" />
+        <RadioButton fx:id="settingsAutosaveDisable" text="Disable" />
+    </HBox>
+    
+    <Label fx:id="lblSettingsAutosaveNum" text="Autosave Files Interval"
+           GridPane.columnIndex="0" GridPane.rowIndex="3"
+           GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+    <TextField fx:id="settingsAutosaveNum" text="" GridPane.columnIndex="1" GridPane.rowIndex="3" maxWidth="100" />
+
+    <Label fx:id="lblSettingsBackupEnable" text="Backup Files"
+           GridPane.columnIndex="0" GridPane.rowIndex="4"
+           GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+
+    <HBox fx:id="hboxSettingsBackup" GridPane.columnIndex="1" GridPane.rowIndex="4"
+          spacing="10" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+        <RadioButton fx:id="settingsBackupEnable" text="Enable"/>
+        <RadioButton fx:id="settingsBackupDisable" text="Disable"/>
+    </HBox>
+    
+    <Label fx:id="lblSettingsBackupNum" text="Backup Files Number"
+           GridPane.columnIndex="0" GridPane.rowIndex="5"
+           GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+
+    <TextField fx:id="settingsBackupNum" text=""
+               GridPane.columnIndex="1" GridPane.rowIndex="5"
+               GridPane.halignment="LEFT" GridPane.valignment="CENTER"/>
+        
+    <Label fx:id="lblSettingsTabs" text="Tabs Number"
+           GridPane.columnIndex="0" GridPane.rowIndex="6"
+           GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+    
+    <TextField fx:id="settingsTabsNum" text=""
+               GridPane.columnIndex="1" GridPane.rowIndex="6"
+               GridPane.halignment="LEFT" GridPane.valignment="CENTER"/>
+    
+    <Label fx:id="lblSettingsLogLevel" text="LogLevel"
+           GridPane.columnIndex="0" GridPane.rowIndex="7"
+           GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+
+    <ChoiceBox fx:id="cbSettingsLogLevel"
+               GridPane.columnIndex="1" GridPane.rowIndex="7" >
+    </ChoiceBox>
+    
+    <Label fx:id="lblSettingsFontSize" text="Font Size"
+           GridPane.columnIndex="0" GridPane.rowIndex="8"
+           GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+        
+    <TextField fx:id="settingsFontSize" text="" 
+               GridPane.columnIndex="1" GridPane.rowIndex="8"
+               GridPane.halignment="LEFT" GridPane.valignment="CENTER"/>
+
+    <Label fx:id="lblSettingsFontFamily" text="Font Family"
+           GridPane.columnIndex="0" GridPane.rowIndex="9"
+           GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+    
+    <ListView fx:id="settingsFontFamily"
+              GridPane.columnIndex="1" GridPane.rowIndex="9"
+              GridPane.halignment="LEFT" GridPane.valignment="CENTER"/>
+
+    <Button fx:id="lblSettingsDone" text="Done" onAction="#settingsSave"
+            GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="2"
+            GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+    
+</GridPane>
